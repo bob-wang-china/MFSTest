@@ -1,6 +1,7 @@
 ## 大文件100MB（block＝1M byte）
 
 * 写命令：
+
 ```bash
 time dd if=/dev/zero of=100m.img bs=1M count=100
 ```
