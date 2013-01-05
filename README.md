@@ -50,6 +50,8 @@ time dd if=10m.img of=/dev/null bs=1M
 
 ```bash
 time path_to_write_n_thread.sh ${thread_count} ${folder_count} ${file_count_per_folder} ${block_size} ${block_count}
+# example
+# time path_to_write_n_thread.sh 2 3 3 100M 3
 ```
 
 * 列表：
