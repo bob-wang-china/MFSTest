@@ -1,3 +1,7 @@
+MFSTest
+
+MFS IO Performance Test
+
 ## 大文件100MB（block＝1M byte）
 
 * 写命令：
@@ -7,7 +11,7 @@ time dd if=/dev/zero of=100m.img bs=1M count=100
 ```
 
 * 读命令：
- 
+
 ```bash
 time dd if=100m.img of=/dev/null bs=1M
 ```
