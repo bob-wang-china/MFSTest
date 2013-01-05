@@ -1,4 +1,5 @@
 #!/bin/bash
+DATEFMT=`date "+%Y%m%d%H%M%S"`
 declare -f write_file
 
 # @params
@@ -28,7 +29,7 @@ function write_file {
 ((i = 1))
 while [ ${i} -le ${1} ]
 do
-  write_file ${i} ${2} ${3} ${4} ${5} &
+  write_file "${DATEFMT}_${i}" ${2} ${3} ${4} ${5} &
   ((i = ${i} + 1))
 done
 wait
