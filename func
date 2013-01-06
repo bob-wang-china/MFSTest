@@ -27,16 +27,3 @@ function concurrent_write_files {
   done
   wait
 }
-
-function test_write {
-  time ./write_big_file.sh ${1} ${2} ${3} ${4} $PATH
-}
-
-function test_read {
-  time find "./$TEST_DIRECTORY/$PATH/* | nl"
-}
-
-function test_delete {
-  time rm -rf  "./$TEST_DIRECTORY/$PATH/* | nl"
-}
-
