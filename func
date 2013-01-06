@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# @params
+#   $1: output directory
+#   $2: number of files
+#   $3: block size of test file, xxxK or xxxM
+#   $4: number of blocks
+function write_files {
+  mkdir -p $1
+  for (( i=0; i<$2; i++ )); do
+    dd if=/dev/zero of="$1/$i.img" bs=$3 count=$4
+  done
+}
+
+# @params
+#   $1: output directory
+#   $2: number of files
+#   $3: block size of test file, xxxK or xxxM
+#   $4: number of blocks
+#   $5: number of processes
+function concurrent_write_files {
+  ((i=1))
+  while [ $i -le $5 ]
+  do
+    write_files "$1/$i" $2 $3 $4 &
+    ((i = $i+1))
+  done
+  wait
+}
+
+function test_write {
+  time ./write_big_file.sh ${1} ${2} ${3} ${4} $PATH
+}
+
+function test_read {
+  time find "./$TEST_DIRECTORY/$PATH/* | nl"
+}
+
+function test_delete {
+  time rm -rf  "./$TEST_DIRECTORY/$PATH/* | nl"
+}
+
