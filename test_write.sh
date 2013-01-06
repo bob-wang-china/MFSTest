@@ -36,21 +36,10 @@ done
 
 source './func'
 
-#if [ ! -d $TEST_DIRECTORY ]; then
-  #echo "no test directory, creating ..."
-  #mkdir $TEST_DIRECTORY
-#fi
-
 if [ ! -d $LOG_DIRECTORY ]; then
   echo "no logs directory, creating ..."
   mkdir $LOG_DIRECTORY
 fi
-
-#if [ ! -d "$TEST_DIRECTORY/$OUTPUT_PATH" ]; then
-  #echo "creating current test directory $TEST_DIRECTORY/$OUTPUT_PATH/ ..."
-  #mkdir "$TEST_DIRECTORY/$OUTPUT_PATH"
-#fi
-
 
 concurrent_write_files "$TEST_DIRECTORY/$OUTPUT_PATH" $FILES_COUNT $BLOCK_SIZE $BLOCKES_COUNT $PROCESSES_COUNT
 
